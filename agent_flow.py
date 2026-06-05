@@ -2,7 +2,7 @@
 Agent flow — a Manim Community animation for teaching how an AI agent works.
 
 Four acts (use `--save_sections` to render them separately):
-  1. The agent architecture: Mistral (LLM) + web_search + get_datetime, wired up.
+  1. The agent architecture: Mistral (LLM) + web_search + run_code, wired up.
   2. The UI: user says "hey", a reply comes back.
   3. A current-event question -> web_search is called -> small result -> answer.
   4. The payoff: the 4 messages + the tool call on the left, and Mistral's
@@ -91,7 +91,7 @@ class AgentFlow(Scene):
 
         llm = label_box("Mistral", "LLM", color=LLM, w=2.7, h=1.25, fs=30)
         web = label_box("web_search", "tool", color=TOOLC, w=2.7, h=1.0, fs=24)
-        clk = label_box("get_datetime", "tool", color=TOOLC, w=2.9, h=1.0, fs=24)
+        clk = label_box("run_code", "tool", color=TOOLC, w=2.9, h=1.0, fs=24)
         tools = VGroup(web, clk).arrange(RIGHT, buff=0.55).next_to(llm, DOWN, buff=1.05)
 
         a1 = DoubleArrow(llm.get_bottom(), web.get_top(), buff=0.12, color=MUT, stroke_width=3, tip_length=0.2)
@@ -197,7 +197,7 @@ class AgentFlow(Scene):
 
         items = [
             ("system",               "You are a helpful assistant.",  SYS),
-            ("available tools",      "web_search, get_datetime",      TOK),
+            ("available tools",      "web_search, run_code",          TOK),
             ("user",                 "What's the latest on Artemis II?", USR),
             ("assistant - tool call", 'web_search("Artemis II ...")',  AST),
             ("tool - result",        "flyby on track; window confirmed.", TOOLC),
@@ -210,7 +210,7 @@ class AgentFlow(Scene):
 
         wsegs = [
             [("<s>", TOK), ("[SYSTEM_PROMPT]", TOK), ("You are a helpful assistant.", INK), ("[/SYSTEM_PROMPT]", TOK)],
-            [("[AVAILABLE_TOOLS]", TOK), ("[ web_search, get_datetime ]", INK), ("[/AVAILABLE_TOOLS]", TOK)],
+            [("[AVAILABLE_TOOLS]", TOK), ("[ web_search, run_code ]", INK), ("[/AVAILABLE_TOOLS]", TOK)],
             [("[INST]", TOK), ("What's the latest on Artemis II?", INK), ("[/INST]", TOK)],
             [("[TOOL_CALLS]", TOK), ('[{"name":"web_search", ...}]', INK), ("</s>", TOK)],
             [("[TOOL_RESULTS]", TOK), ("flyby on track; window confirmed.", INK), ("[/TOOL_RESULTS]", TOK)],
