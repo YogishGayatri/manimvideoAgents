@@ -2,6 +2,14 @@
 
 Manim Community animations explaining how AI agents work.
 
+## Scenes
+
+- **`agent_flow.py` — `AgentFlow`**: how an AI agent works (LLM + tools, the
+  chat UI, a web_search call, and messages vs. the raw token stream).
+- **`graph_flow.py` — `GraphFlow`**: a ~1 minute, light-on-words intro to the
+  graph data structure (nodes, edges, direction, branch/merge/loop) that lands
+  on *why* LangGraph models an agent as a graph.
+
 ## Setup
 
 System dependencies (Ubuntu/Debian):
@@ -26,7 +34,10 @@ pip install -r requirements.txt
 . .venv/bin/activate
 manim -ql agent_flow.py AgentFlow   # fast 480p preview
 manim -qh agent_flow.py AgentFlow   # 1080p
+
+manim -ql graph_flow.py GraphFlow   # fast 480p preview
+manim -qh graph_flow.py GraphFlow   # 1080p
 ```
 
-Add `--save_sections` to render each of the four acts separately. Output lands
-in `media/videos/agent_flow/`.
+Add `--save_sections` to render each beat/act separately. Output lands in
+`media/videos/<file>/`.
