@@ -9,6 +9,9 @@ Manim Community animations explaining how AI agents work.
 - **`graph_flow.py` — `GraphFlow`**: a ~1 minute, light-on-words intro to the
   graph data structure (nodes, edges, direction, branch/merge/loop) that lands
   on *why* LangGraph models an agent as a graph.
+- **`mcp_flow.py` — `MCPFlow`**: a ~1 minute, visual-first explainer of the
+  Model Context Protocol — the N×M → N+M integration problem and the
+  Host / Client / Server roles (a "USB-C port for AI").
 
 ## Setup
 
@@ -37,6 +40,9 @@ manim -qh agent_flow.py AgentFlow   # 1080p
 
 manim -ql graph_flow.py GraphFlow   # fast 480p preview
 manim -qh graph_flow.py GraphFlow   # 1080p
+
+manim -ql mcp_flow.py MCPFlow       # fast 480p preview
+manim -qh mcp_flow.py MCPFlow       # 1080p
 ```
 
 Add `--save_sections` to render each beat/act separately. Output lands in
