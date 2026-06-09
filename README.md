@@ -12,6 +12,10 @@ Manim Community animations explaining how AI agents work.
 - **`mcp_flow.py` — `MCPFlow`**: a ~1 minute, visual-first explainer of the
   Model Context Protocol — the N×M → N+M integration problem and the
   Host / Client / Server roles (a "USB-C port for AI").
+- **`state_flow.py` — `StateFlow`**: a ~1 minute explainer of LangGraph
+  *state* — a card of named fields travels START → END; each node reads it
+  and writes into it (two nodes via an LLM call), and the final state is
+  the answer.
 
 ## Setup
 
@@ -43,6 +47,9 @@ manim -qh graph_flow.py GraphFlow   # 1080p
 
 manim -ql mcp_flow.py MCPFlow       # fast 480p preview
 manim -qh mcp_flow.py MCPFlow       # 1080p
+
+manim -ql state_flow.py StateFlow   # fast 480p preview
+manim -qh state_flow.py StateFlow   # 1080p
 ```
 
 Add `--save_sections` to render each beat/act separately. Output lands in
