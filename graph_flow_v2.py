@@ -217,7 +217,7 @@ class GraphFlowV2(Scene):
                       ShowPassingFlash(e_fwd.copy().set_color(TOK).set_stroke(width=7),
                                        time_width=0.6), run_time=0.55)
             new_cnt = Text(str(i), font_size=26, color=TOK).move_to(cnt)
-            self.play(MoveAlongPath(d, back.copy().reverse_direction()),
+            self.play(MoveAlongPath(d, back.copy()),
                       Transform(cnt, new_cnt), run_time=0.7)
         self.wait(1.6)
         self.play(FadeOut(VGroup(pnode, qnode, e_fwd, back, cnt, d, lbl3, th)),
