@@ -20,6 +20,10 @@ Manim Community animations explaining how AI agents work.
   *state* — a card of named fields travels START → END; each node reads it
   and writes into it (two nodes via an LLM call), and the final state is
   the answer.
+- **`memory_flow.py` — `MemoryFlow`**: a ~1:00 explainer of agent memory and
+  safety — short-term (Checkpointer = this conversation), long-term
+  (Store = facts that outlive the chat), both feeding the LLM, then
+  human-in-the-loop (pause before risky steps: approve / edit / reject).
 
 ## Setup
 
@@ -57,6 +61,9 @@ manim -qh mcp_flow.py MCPFlow       # 1080p
 
 manim -ql state_flow.py StateFlow   # fast 480p preview
 manim -qh state_flow.py StateFlow   # 1080p
+
+manim -ql memory_flow.py MemoryFlow   # fast 480p preview
+manim -qh memory_flow.py MemoryFlow   # 1080p
 ```
 
 Add `--save_sections` to render each beat/act separately. Output lands in
