@@ -242,18 +242,21 @@ class MemoryFlow(Scene):
         self.play(ReplacementTransform(cap, cap2), run_time=0.4)
         self.wait(2.0)
 
-        # you approve -> the gate opens and the action goes through
+        # you approve -> the approval reaches the gate, which opens
         self.play(Indicate(opts[0], color=AI, scale_factor=1.15), run_time=0.6)
         a_ok = Arrow(opts[0].get_left(), gate.get_center() + RIGHT * 0.2,
                      color=AI, stroke_width=3.5, tip_length=0.2, buff=0.2)
-        self.play(GrowArrow(a_ok), gate.animate.set_opacity(0.25),
-                  gate_lbl.animate.set_opacity(0.25), run_time=0.6)
-        sent = Text("sent", font_size=24, color=AI, weight=BOLD).move_to(
-            gate.get_center() + RIGHT * 1.4)
-        self.play(d.animate.move_to(sent.get_left() + LEFT * 0.2),
-                  FadeIn(sent, shift=RIGHT * 0.2), run_time=0.7)
-        self.play(FadeOut(d), run_time=0.2)
-        cap3 = caption("you stay in control of what the agent actually does", AI)
+        self.play(GrowArrow(a_ok), run_time=0.5)
+        self.play(gate.animate.set_opacity(0.2),
+                  gate_lbl.animate.set_opacity(0.2), run_time=0.5)
+        # gate open -> the agent's pending action now runs (it sends the email)
+        self.play(d.animate.move_to(action.get_right() + LEFT * 0.15), run_time=0.6)
+        sent = Text("sent", font_size=22, color=AI, weight=BOLD).next_to(
+            action, DOWN, buff=0.22)
+        self.play(action[0].animate.set_color(AI), action[1].animate.set_color(AI),
+                  FadeOut(d), FadeIn(sent, shift=UP * 0.15),
+                  Flash(action, color=AI, flash_radius=1.0), run_time=0.7)
+        cap3 = caption("only after you approve does the agent act", AI)
         self.play(ReplacementTransform(cap2, cap3), run_time=0.4)
         self.wait(4.4)
 
